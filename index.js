@@ -13,7 +13,7 @@ app.get("/",(req, res)=>{
 
 app.get("/visitas",(req, res)=>{
   counter_page++;
-  res.send(`Esta página hoy ha tenido ${counter_page} visitas`);
+  res.send(`..............................Esta página hoy ha tenido ${counter_page} visitas`);
 })
 
 
