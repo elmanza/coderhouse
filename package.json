@@ -1,0 +1,26 @@
+{
+  "name": "clasenpm",
+  "version": "1.0.0",
+  "description": "Ejemplo de npm en la clase",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "NPM",
+    "EXAMPLES"
+  ],
+  "author": "Coder House",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "sequelize": "^6.6.5",
+    "socket.io": "4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
