@@ -1,34 +1,34 @@
-const http = require('http');
+// const http = require('http');
+const express = require("express");
 let moment = require('moment');
-const express = require('express');
-const server = express();
-const port = 8080;
-let contador = 0;
-server.get('/',(req,res)=>{
-  res.status(200).send(`<!DOCTYPE html>
-                        <html>
-                          <head>
-                            <meta charset="utf-8">
-                            <title>Mi pagina de prueba</title>
-                          </head>
-                          <body>
-                            <h1>Mi título</h1>
-                          </body>
-                        </html>`);
+let ngrok = require("ngrok");
+const PORT = 3000;
+let app = express();
+let counter_page = 0;
+
+app.get("/",(req, res)=>{
+  let response = `<h1 style="color:blue;font-family:'Roboto'; font-size:60pt;">Bienvenidos al servidor express</h1>`;
+  res.send(response);
 })
 
-server.get('/visitas',(req,res)=>{
-  contador++;
-  res.status(200).send(`Total de personas que han ingresado a esta página ${contador}`);
-})
-
-server.get('/fyh',(req,res)=>{
-  res.status(200).json({"fyh": moment().format("YYYY-MM-DD HH:MM:SS").toString()});
+app.get("/visitas",(req, res)=>{
+  counter_page++;
+  res.send(`Esta página hoy ha tenido ${counter_page} visitas`);
 })
 
 
-server.listen(port, ()=>{
-  console.log(`ESCUCANDO EL SERVER DESDE EXPRESS http://localhost:${port}`);
+app.get("/fyh",(req, res)=>{
+  res.json({"fyh": moment().format("YYYY-MM-DD HH:MM:SS").toString()});
 })
 
-server.on('error', err => console.log(`Sucedió un error en la inicialización del servidor`, err));
+
+app.listen(PORT, ()=>{
+  console.log(`Estamos conectados a la URL http://localhost:${PORT}`)
+});
+
+// (async function() {
+//   const url = await ngrok.connect(PORT);
+//   console.log("Mi url", url, " -->portServer:",PORT);
+// })();
+
+app.on("error", err => console.log(`Falló nuestra conexión al servidor`, err));
